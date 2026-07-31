@@ -76,7 +76,7 @@ public/
 
 ## Live Demo
 
-**Website:** https://rishabh-sinha-six-gamma-17.vercel.app/
+**Website:** https://rishabh-sinha.pages.dev/
 
 ## Connect With Me
 
