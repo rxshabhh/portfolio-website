@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import setCharacter from "./utils/character";
 import setLighting from "./utils/lighting";
-import { useLoading } from "../../context/LoadingProvider";
 import handleResize from "./utils/resizeUtils";
 import {
   handleMouseMove,
@@ -17,7 +16,6 @@ const Scene = () => {
   const canvasDiv = useRef<HTMLDivElement | null>(null);
   const hoverDivRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef(new THREE.Scene());
-  const { setLoading } = useLoading();
 
   const [character, setChar] = useState<THREE.Object3D | null>(null);
   useEffect(() => {
@@ -29,10 +27,11 @@ const Scene = () => {
 
       const renderer = new THREE.WebGLRenderer({
         alpha: true,
-        antialias: true,
+        antialias: false,
+        powerPreference: "high-performance",
       });
       renderer.setSize(container.width, container.height);
-      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1;
       canvasDiv.current.appendChild(renderer.domElement);
@@ -50,15 +49,19 @@ const Scene = () => {
       const clock = new THREE.Clock();
 
       const light = setLighting(scene);
-      let progress = setProgress((value) => setLoading(value));
+      let progress = setProgress((_value) => {});
       const { loadCharacter } = setCharacter(renderer, scene, camera);
 
+      let isMounted = true;
       loadCharacter().then((gltf) => {
+        if (!isMounted) return;
         if (gltf) {
           const animations = setAnimations(gltf);
           hoverDivRef.current && animations.hover(gltf, hoverDivRef.current);
           mixer = animations.mixer;
           let character = gltf.scene;
+          character.rotation.y = -Math.PI / 5; // Face right towards text 
+          character.position.x = -1.8; // Shift to true left
           setChar(character);
           scene.add(character);
           headBone = character.getObjectByName("spine006") || null;
@@ -106,8 +109,9 @@ const Scene = () => {
         landingDiv.addEventListener("touchstart", onTouchStart);
         landingDiv.addEventListener("touchend", onTouchEnd);
       }
+      let animationFrameId: number;
       const animate = () => {
-        requestAnimationFrame(animate);
+        animationFrameId = requestAnimationFrame(animate);
         if (headBone) {
           handleHeadRotation(
             headBone,
@@ -127,6 +131,8 @@ const Scene = () => {
       };
       animate();
       return () => {
+        isMounted = false;
+        cancelAnimationFrame(animationFrameId);
         clearTimeout(debounce);
         scene.clear();
         renderer.dispose();
@@ -146,14 +152,9 @@ const Scene = () => {
   }, []);
 
   return (
-    <>
-      <div className="character-container">
-        <div className="character-model" ref={canvasDiv}>
-          <div className="character-rim"></div>
-          <div className="character-hover" ref={hoverDivRef}></div>
-        </div>
-      </div>
-    </>
+    <div className="w-full h-full relative cursor-pointer" ref={canvasDiv}>
+      <div className="w-full h-full absolute inset-0 z-10" ref={hoverDivRef}></div>
+    </div>
   );
 };
 

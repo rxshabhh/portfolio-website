@@ -5,8 +5,8 @@ const Career = () => {
     <div className="career-section section-container">
       <div className="career-container">
         <h2>
-          My career <span>&</span>
-          <br /> experience
+          Education <span>&</span>
+          <br /> achievements
         </h2>
         <div className="career-info">
           <div className="career-timeline">
@@ -15,43 +15,37 @@ const Career = () => {
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Position In Company</h4>
-                <h5>Company Name</h5>
+                <h4>B.Tech Computer Science</h4>
+                <h5>Vellore Institute of Technology | Chennai</h5>
               </div>
-              <h3>20XX</h3>
+              <h3>2024 - 2028</h3>
             </div>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-              labore sit non ipsum temporibus quidem, deserunt eaque officiis
-              mollitia ratione suscipit repellat.
+              CGPA: 8.89. Relevant Coursework: Data Structures & Algorithms, Object-Oriented Programming, Operating Systems, Computer Networks, Database Management Systems, Software Engineering.
             </p>
           </div>
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Position In Company</h4>
-                <h5>Company Name</h5>
+                <h4>Branch Rank 1 (Semester 2)</h4>
+                <h5>VIT Chennai</h5>
               </div>
-              <h3>20XX</h3>
+              <h3>Mar 2024</h3>
             </div>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-              labore sit non ipsum temporibus quidem, deserunt eaque officiis
-              mollitia ratione suscipit repellat.
+              Rank 2 in Semester 1 at VIT Chennai. Competitive Programmer (ICPC) with expertise in algorithmic problem-solving.
             </p>
           </div>
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Position In Company</h4>
-                <h5>Company Name</h5>
+                <h4>R&D Lead, CSED</h4>
+                <h5>Centre for Social & Entrepreneurship Development</h5>
               </div>
-              <h3>NOW</h3>
+              <h3>Present</h3>
             </div>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-              labore sit non ipsum temporibus quidem, deserunt eaque officiis
-              mollitia ratione suscipit repellat.
+              R&D Lead at the Centre for Social & Entrepreneurship Development — VIT Chennai, focused on social innovation and entrepreneurship.
             </p>
           </div>
         </div>
