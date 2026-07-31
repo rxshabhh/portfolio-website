@@ -71,7 +71,8 @@ public/
 
 ##  Preview
 
-Add screenshots or a GIF of your portfolio here.
+<img width="1770" height="922" alt="image" src="https://github.com/user-attachments/assets/d7488030-adee-47b2-a910-27c33350dc64" />
+
 
 ## Live Demo
 
@@ -79,9 +80,9 @@ Add screenshots or a GIF of your portfolio here.
 
 ## Connect With Me
 
-* LinkedIn: https://linkedin.com/in/your-profile
-* GitHub: https://github.com/your-username
-* Email: [your.email@example.com](mailto:your.email@example.com)
+* LinkedIn: https://www.linkedin.com/in/rishabh-sinha-581168320/
+* GitHub: https://github.com/rxshabhh
+* Email: rishabh.sinha0709@gmail.com
 
 ---
  If you enjoyed exploring this portfolio, feel free to star the repository!
